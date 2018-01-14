@@ -21,6 +21,11 @@ public class InfoWriter {
     }
 
     public void wrap(ArrayList<String> template){
+
+        if (infoBlockNumber > template.size()){
+            throw new IllegalArgumentException("Info block line number is higher than file length");
+        }
+
         String temp = OPENED_H + "Author: " + author + CLOSED_H;
         template.add(infoBlockNumber, temp);
         temp = OPENED_H + "Date: " + date + CLOSED_H;

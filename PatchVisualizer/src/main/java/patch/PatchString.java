@@ -3,28 +3,28 @@ package patch;
 public class PatchString {
     Integer deletedStringNumber;
     Integer addedStringNumber = new Integer(0);
-    Character mStatus;
-    String mValue;
+    Character status;
+    String value;
 
     public PatchString(PatchString patchString){
         deletedStringNumber = patchString.getDeletedStringNumber();
-        mStatus = patchString.getStatus();
-        mValue = patchString.getValue();
+        status = patchString.getStatus();
+        value = patchString.getValue();
         addedStringNumber = patchString.getAddedStringNumber();
     }
 
-    public PatchString(Integer number, Character status, String value){
+    public PatchString(Integer number, Character status1, String value1){
         deletedStringNumber = number;
-        mStatus = status;
-        mValue = value;
+        status = status1;
+        value = value1;
     }
 
     public Character getStatus() {
-        return mStatus;
+        return status;
     }
 
     public String getValue() {
-        return mValue;
+        return value;
     }
 
     public Integer getDeletedStringNumber() {

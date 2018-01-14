@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class SplitWriter {
+public class SplitWriter implements Writer{
     private ArrayList<PatchString> addedStrings = new ArrayList<>();
     private ArrayList<PatchString> deletedStrings = new ArrayList<>();
     private ArrayList<String> templateData = new ArrayList<>();

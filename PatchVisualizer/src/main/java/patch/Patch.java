@@ -3,34 +3,30 @@ package patch;
 import java.util.ArrayList;
 
 public class Patch {
-    private String mName;
-    private String mDateOfChange;
-    private String mFileName;
+    private String name = new String();
+    private String dateOfChange = new String();
+    private String fileName = new String();
     private ArrayList<PatchString> mString = new ArrayList<PatchString>();
 
     public Patch(){}
 
-    public Patch(String name, String date, String fileName, ArrayList<PatchString> strings){
-        mName = name;
-        mDateOfChange = date;
-        mFileName = fileName;
-        mString = strings;
+    public Patch(String name1, String date1, String fileName1, ArrayList<PatchString> strings1){
+        name = name1;
+        dateOfChange = date1;
+        fileName = fileName1;
+        mString = strings1;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public String getDateOfChange() {
-        return mDateOfChange;
+        return dateOfChange;
     }
 
     public String getFileName() {
-        return mFileName;
-    }
-
-    public void setStrings(ArrayList<PatchString> mergedStrings) {
-        mString = mergedStrings;
+        return fileName;
     }
 
     public ArrayList<PatchString> getStrings() {

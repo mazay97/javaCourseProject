@@ -2,7 +2,7 @@ package visualization;
 
 import patch.PatchString;
 
-public class StringWrapper {
+public class StringWrapper implements Wrapper{
     private final String OPENED_TR = "<tr>\n";
     private final String ADDED_ELEMENT = "<tr class=\"added\">\n";
     private final String DELETED_ELEMENT = "<tr class=\"deleted\">\n";

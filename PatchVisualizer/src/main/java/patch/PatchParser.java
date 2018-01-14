@@ -81,11 +81,10 @@ public class PatchParser {
         BlockData result;
         String[] splittedLine = line.split("\\s");
 
-        if (!splittedLine[0].equals("@@") && !splittedLine[3].equals("@@")){
-            throw new IllegalArgumentException("Wrong format of number string");
-        }
-
         if (splittedLine.length >= LENGTH_OF_NUMBER_STRING){
+            if (!splittedLine[0].equals("@@") || !splittedLine[3].equals("@@")){
+                throw new IllegalArgumentException("Wrong format of number string");
+            }
             String[] addedData = splittedLine[2].split(",");
             String[] deletedData = splittedLine[1].split(",");
 

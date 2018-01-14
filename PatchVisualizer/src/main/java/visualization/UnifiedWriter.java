@@ -7,12 +7,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class UnifiedWriter {
+public class UnifiedWriter extends StringWrapper implements Writer {
     private ArrayList<PatchString> addedStrings = new ArrayList<>();
     private ArrayList<PatchString> deletedStrings = new ArrayList<>();
     private ArrayList<String> templateData = new ArrayList<>();
 
-    private StringWrapper wrapper = new StringWrapper();
     private Integer position = 24;
 
     public UnifiedWriter(ArrayList<ArrayList<PatchString>> data, ArrayList<String> template){
@@ -26,7 +25,7 @@ public class UnifiedWriter {
         ArrayList<PatchString> result = mergeStrings();
 
         for (int i = 0; i < result.size(); i++){
-            templateData.add(position + i, wrapper.wrap(result.get(i), result.get(i).getAddedStringNumber()));
+            templateData.add(position + i, wrap(result.get(i), result.get(i).getAddedStringNumber()));
         }
 
         BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,false));

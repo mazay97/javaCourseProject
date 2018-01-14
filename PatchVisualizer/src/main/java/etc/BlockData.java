@@ -1,19 +1,19 @@
 package etc;
 
 public class BlockData {
-    Integer mAddedStringBeginNumber;
-    Integer mDeletedStringBeginNumber;
+    Integer addedStringBeginNumber;
+    Integer deletedStringBeginNumber;
 
-    public BlockData(Integer addedStringBeginNumber, Integer deletedStringBeginNumber){
-        mAddedStringBeginNumber = addedStringBeginNumber;
-        mDeletedStringBeginNumber = deletedStringBeginNumber;
+    public BlockData(Integer addedStringNumber, Integer deletedStringNumber){
+        addedStringBeginNumber = addedStringNumber;
+        deletedStringBeginNumber = deletedStringNumber;
     }
 
     public Integer getAddedStringNumber(){
-        return mAddedStringBeginNumber;
+        return addedStringBeginNumber;
     }
 
     public Integer getDeletedStringNumber(){
-        return mDeletedStringBeginNumber;
+        return deletedStringBeginNumber;
     }
 }
