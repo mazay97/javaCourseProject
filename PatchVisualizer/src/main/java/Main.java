@@ -1,14 +1,16 @@
+import com.sun.javaws.exceptions.InvalidArgumentException;
+import file.BasicFileParser;
 import file.FileParser;
+import patch.BasicPatch;
+import patch.BasicPatchParser;
 import patch.Patch;
 import patch.PatchParser;
 import visualization.*;
-import visualization.DataMerger;
-import visualization.SplitWriter;
-import visualization.UnifiedWriter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Main {
     private static final String FILE_FLAG = "--file";
@@ -23,32 +25,30 @@ public class Main {
     private static final Integer SPLIT_INFO_BLOCK_NUMBER = 28;
     private static final Integer UNIFIED_INFO_BLOCK_NUMBER = 20;
 
-    private static String patchFile = new String();
-    private static String sourceFile = new String();
-    private static String outFile = new String();
-    private static String mode = new String();
+    private static String patchFile;
+    private static String sourceFile;
+    private static String outFile;
+    private static String mode;
 
-    private static Patch patch = new Patch();
-    private static HashMap<Integer, String> file = new HashMap<>();
-    private static ArrayList<String> htmlTemplate = new ArrayList<>();
+    private static Patch patch = new BasicPatch();
+    private static Map<Integer, String> file = new HashMap<>();
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         try {
             readArguments(args);
             parsePatch();
             parseFile();
             generateHtmlData();
-        } catch (NumberFormatException ex){
-            System.out.println("Wrong data in patch in file block");
-        } catch (Exception ex){
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Use: java patchVisualizer --file <file> --patch <patch> --out <out> --mode <mode>");
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println("IO failed, check file names");
         }
-
     }
 
-    private static void readArguments(final String[] args){
-        ArgumentParser argumentParser = new ArgumentParser();
+    private static void readArguments(final String[] args) {
+        ArgumentParser argumentParser = new BasicArgumentParser();
         argumentParser.addFlag(FILE_FLAG);
         argumentParser.addFlag(PATCH_FLAG);
         argumentParser.addFlag(OUT_FLAG);
@@ -62,38 +62,38 @@ public class Main {
         mode = argumentParser.getValue(MODE_FLAG);
     }
 
-    private static void parsePatch() throws IOException{
-        PatchParser pp = new PatchParser(patchFile);
+    private static void parsePatch() throws IOException {
+        PatchParser pp = new BasicPatchParser(patchFile);
         patch = pp.parsePatch();
     }
 
-    private static void parseFile() throws IOException{
-        FileParser fp = new FileParser(sourceFile);
+    private static void parseFile() throws IOException {
+        FileParser fp = new BasicFileParser(sourceFile);
         file = fp.parse();
     }
 
-    private static void generateHtmlData() throws IOException{
-        TemplateReader tr = new TemplateReader();
-        DataMerger dm = new DataMerger(patch.getStrings(), file);
+    private static void generateHtmlData() throws IOException {
+        TemplateReader tr = new BasicTemplateReader();
+        DataMerger dm = new BasicDataMerger(patch.getStrings(), file);
         InfoWriter infoWriter;
+        List<String> htmlTemplate;
 
-        if (mode.equals(SPLIT_MODE)){
+        if (mode.equals(SPLIT_MODE)) {
             tr.readTemplate(SPLIT_TEMPLATE);
             htmlTemplate = tr.getTemplate();
-            infoWriter = new InfoWriter(patch, SPLIT_INFO_BLOCK_NUMBER);
+            infoWriter = new BasicInfoWriter(patch, SPLIT_INFO_BLOCK_NUMBER);
             infoWriter.wrap(htmlTemplate);
-            SplitWriter generator = new SplitWriter(dm.getMergedData(), htmlTemplate);
-            generator.genHtml(outFile);
-        } else if (mode.equals(UNIFIED_MODE)){
+            DataWriter generator = new BasicSplitWriter(dm.getMergedData(), htmlTemplate);
+            generator.generateHtml(outFile);
+        } else if (mode.equals(UNIFIED_MODE)) {
             tr.readTemplate(UNIFIED_TEMPLATE);
             htmlTemplate = tr.getTemplate();
-            infoWriter = new InfoWriter(patch, UNIFIED_INFO_BLOCK_NUMBER);
+            infoWriter = new BasicInfoWriter(patch, UNIFIED_INFO_BLOCK_NUMBER);
             infoWriter.wrap(htmlTemplate);
-            UnifiedWriter generator = new UnifiedWriter(dm.getMergedData(), htmlTemplate);
-            generator.genHtml(outFile);
+            DataWriter generator = new BasicUnifiedWriter(dm.getMergedData(), htmlTemplate);
+            generator.generateHtml(outFile);
         } else {
             throw new IllegalArgumentException("Wrong name of visualization mode");
         }
-
     }
 }

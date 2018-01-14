@@ -1,45 +1,15 @@
 package patch;
 
-public class PatchString {
-    Integer deletedStringNumber;
-    Integer addedStringNumber = new Integer(0);
-    Character mStatus;
-    String mValue;
+public interface PatchString {
+    Character getStatus();
 
-    public PatchString(PatchString patchString){
-        deletedStringNumber = patchString.getDeletedStringNumber();
-        mStatus = patchString.getStatus();
-        mValue = patchString.getValue();
-        addedStringNumber = patchString.getAddedStringNumber();
-    }
+    String getValue();
 
-    public PatchString(Integer number, Character status, String value){
-        deletedStringNumber = number;
-        mStatus = status;
-        mValue = value;
-    }
+    Integer getDeletedStringNumber();
 
-    public Character getStatus() {
-        return mStatus;
-    }
+    void setDeletedStringNumber(Integer stringNumber);
 
-    public String getValue() {
-        return mValue;
-    }
+    void setAddedStringNumber(Integer stringNumber);
 
-    public Integer getDeletedStringNumber() {
-        return deletedStringNumber;
-    }
-
-    public void setDeletedStringNumber(Integer stringNumber) {
-        this.deletedStringNumber = stringNumber;
-    }
-
-    public void setAddedStringNumber(Integer stringNumber) {
-        this.addedStringNumber = stringNumber;
-    }
-
-    public Integer getAddedStringNumber() {
-        return addedStringNumber;
-    }
+    Integer getAddedStringNumber();
 }

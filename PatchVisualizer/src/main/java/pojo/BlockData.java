@@ -1,8 +1,8 @@
-package etc;
+package pojo;
 
 public class BlockData {
-    Integer mAddedStringBeginNumber;
-    Integer mDeletedStringBeginNumber;
+    private Integer mAddedStringBeginNumber;
+    private Integer mDeletedStringBeginNumber;
 
     public BlockData(Integer addedStringBeginNumber, Integer deletedStringBeginNumber){
         mAddedStringBeginNumber = addedStringBeginNumber;
