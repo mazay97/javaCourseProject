@@ -1,0 +1,34 @@
+From dd370010df13a66adb9f9fb1bb4a158fe4df1675 Mon Sep 17 00:00:00 2001
+From: tatianajiselle <Tatiana@Tatianas-MacBook-Pro.local>
+Date: Thu, 24 Aug 2017 23:22:26 -0700
+Subject: [PATCH] Fixed typo in script decsription.
+
+---
+ README.md | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/README.md b/README.md
+index 88c65bc..8a4d9ce 100644
+--- a/README.md
++++ b/README.md
+@@ -1,15 +1,15 @@
+ //ReadMe.Txt
+ //
+ //
+-___Developed by Tatiana Ensslin___
++___Developed by Tatiana Ensslin___
+
+-This is a repository containing personalized scripts I have written for the Amazon Alexa SKill Kit in NodeJs to use with my Echo Dot.
++This is a repository containing personalized scripts I have written for the Amazon Alexa Skill Kit in NodeJs to use with my Echo Dot.
+
+-For help with starting your own script, visit: https://developer.amazon.com/alexa-skills-kit/alexa-skill-quick-start-tutorial
++For help with starting your own script, visit: https://developer.amazon.com/alexa-skills-kit/alexa-skill-quick-start-tutorial
+
+-Scripts In Repository:
++Scripts In Repository:
+
+-|       name      ||   Description                                               |
+-|    JasonFacts   || Intent work Jason triggers comedic inside jokes as reponses |
++|       name      ||   Description                                                 |
++|    JasonFacts   || Intent word 'Jason' triggers comedic inside jokes as reponses |
+
