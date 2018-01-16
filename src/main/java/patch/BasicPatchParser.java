@@ -10,16 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasicPatchParser implements PatchParser {
-    private final char NUMBER_STRING_LITERAL = '@';
-    private int FILE_BLOCK = 0;
-    private final Integer LENGTH_OF_NUMBER_STRING = 4;
-    private final char DELETED_STRING_LITERAL = '-';
-    private final char ADDED_STRING_LITERAL = '+';
+    private static final char NUMBER_STRING_LITERAL = '@';
+    private static final Integer LENGTH_OF_NUMBER_STRING = 4;
+    private static final char DELETED_STRING_LITERAL = '-';
+    private static final char ADDED_STRING_LITERAL = '+';
     private static final String FILE_BLOCK_BEGINNING = "---";
     private static final String BLOCK_INFO_BEGINNING = "@@";
     private static final String USER_STRING_NAME = "From:";
     private static final String DATE_STRING_NAME = "Date:";
 
+    private static int mFileBlock = 0;
     private String mFileToParse;
     private List<PatchString> mStrings = new ArrayList<>();
 
@@ -36,9 +36,9 @@ public class BasicPatchParser implements PatchParser {
 
         findFileBlock(lines);
 
-        String fileName = lines.get(FILE_BLOCK + 1);
+        String fileName = lines.get(mFileBlock + 1);
 
-        if (FILE_BLOCK == 0){
+        if (mFileBlock == 0){
             throw new IOException("Can't find file block");
         }
 
@@ -61,7 +61,7 @@ public class BasicPatchParser implements PatchParser {
     private void findFileBlock(List<String> lines){
         for (int i = 0; i < lines.size(); i++){
             if (lines.get(i).equals(FILE_BLOCK_BEGINNING)){
-                FILE_BLOCK = i;
+                mFileBlock = i;
                 break;
             }
         }
@@ -69,7 +69,7 @@ public class BasicPatchParser implements PatchParser {
 
     private void readLines(List<String> lines){
         BlockData stringNumber;
-        for (int i = FILE_BLOCK; i < lines.size(); i++){
+        for (int i = mFileBlock; i < lines.size(); i++){
             if (lines.get(i).length() > 0){
                 if (lines.get(i).charAt(0) == NUMBER_STRING_LITERAL){
                     stringNumber = parseStringNumber(lines.get(i));

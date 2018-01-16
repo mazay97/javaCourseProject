@@ -4,6 +4,6 @@ import patch.PatchString;
 
 import java.util.List;
 
-interface DataMerger {
+public interface DataMerger {
     List<List<PatchString>> getMergedData();
 }

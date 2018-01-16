@@ -24,7 +24,6 @@ public class BasicDataMerger implements DataMerger {
         List<PatchString> deletedResult = new ArrayList<>();
 
         fillFirstTable(deletedResult, addedResult);
-
         fillSecondTable(addedResult);
 
         result.add(deletedResult);

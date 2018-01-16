@@ -13,7 +13,7 @@ public class BasicUnifiedWriter implements DataWriter {
     private List<PatchString> mAddedStrings = new ArrayList<>();
     private List<PatchString> mDeletedStrings = new ArrayList<>();
     private List<String> mTemplateData = new ArrayList<>();
-    private StringWrapper wrapper = new BasicStringWrapper();
+    private StringWrapper mWrapper = new BasicStringWrapper();
     private static final Integer POSITION = 24;
 
     public BasicUnifiedWriter(List<List<PatchString>> data, List<String> template){
@@ -27,7 +27,7 @@ public class BasicUnifiedWriter implements DataWriter {
         List<PatchString> result = mergeStrings();
 
         for (int i = 0; i < result.size(); i++){
-            mTemplateData.add(POSITION + i, wrapper.wrap(result.get(i), result.get(i).getAddedStringNumber()));
+            mTemplateData.add(POSITION + i, mWrapper.wrap(result.get(i), result.get(i).getAddedStringNumber()));
         }
 
         BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,false));

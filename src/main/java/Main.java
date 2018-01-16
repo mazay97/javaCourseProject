@@ -11,6 +11,7 @@ import visualization.BasicUnifiedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -75,11 +76,11 @@ public class Main {
     }
 
     private static void generateHtmlData() throws IOException{
-        BasicTemplateReader tr = new BasicTemplateReader();
-        BasicDataMerger dm = new BasicDataMerger(basicPatch.getStrings(), file);
-        BasicInfoWriter infoWriter;
+        TemplateReader tr = new BasicTemplateReader();
+        DataMerger dm = new BasicDataMerger(basicPatch.getStrings(), file);
+        InfoWriter infoWriter;
 
-        ArrayList<String> htmlTemplate = new ArrayList<>();
+        List<String> htmlTemplate = new ArrayList<>();
         switch (mode) {
             case SPLIT_MODE: {
                 tr.readTemplate(SPLIT_TEMPLATE);

@@ -11,6 +11,8 @@ public class BasicInfoWriter implements InfoWriter{
     private String mDate;
     private String mFile;
     private Integer mInfoBlockNumber;
+    private static final String OPENED_H = "<h2>";
+    private static final String CLOSED_H = "</h2>";
 
 
     public BasicInfoWriter(Patch basicPatch, Integer blockNumber){
@@ -26,8 +28,6 @@ public class BasicInfoWriter implements InfoWriter{
             throw new IllegalArgumentException("Info block line number is higher than file length");
         }
 
-        String CLOSED_H = "</h2>";
-        String OPENED_H = "<h2>";
         String temp = OPENED_H + "Author: " + mAuthor + CLOSED_H;
         template.add(mInfoBlockNumber, temp);
         temp = OPENED_H + "Date: " + mDate + CLOSED_H;

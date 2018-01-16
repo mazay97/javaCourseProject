@@ -2,6 +2,6 @@ package visualization;
 
 import java.util.List;
 
-interface InfoWriter {
+public interface InfoWriter {
     void wrap(List<String> template);
 }

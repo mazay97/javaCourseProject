@@ -59,7 +59,7 @@ public class BasicUnifiedWriterTest {
         data.add(added);
         BasicTemplateReader basicTemplateReader = new BasicTemplateReader();
         basicTemplateReader.readTemplate("src/input/unified.html");
-        ArrayList<String> template = basicTemplateReader.getTemplate();
+        List<String> template = basicTemplateReader.getTemplate();
 
         BasicUnifiedWriter unifiedWriter = new BasicUnifiedWriter(data, template);
         unifiedWriter.generateHtml("test4.html");
