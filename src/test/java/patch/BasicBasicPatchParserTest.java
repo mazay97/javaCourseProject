@@ -48,7 +48,7 @@ public class BasicBasicPatchParserTest {
         basicPatchParser.parsePatch();
     }
 
-    @Test(expected = IOException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void parsePatchWithoutStringsBlock() throws Exception {
         BasicPatchParser basicPatchParser = new BasicPatchParser("src/input/test3.patch");
 

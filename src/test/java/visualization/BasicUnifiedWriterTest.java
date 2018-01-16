@@ -44,7 +44,7 @@ public class BasicUnifiedWriterTest {
         assertEquals(25, lines.size());
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void unifiedNormalTemplateWithNormalData() throws Exception {
         List<List<PatchString>> data = new ArrayList<>();
         List<PatchString> added = new ArrayList<>();

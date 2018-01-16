@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class BasicDataMergerTest {
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void getMergedData() throws Exception {
         List<PatchString> patchStrings = new ArrayList<>();
         HashMap<Integer, String> file = new HashMap<>();

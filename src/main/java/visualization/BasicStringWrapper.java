@@ -1,6 +1,5 @@
 package visualization;
 
-import patch.BasicPatchString;
 import patch.PatchString;
 
 public class BasicStringWrapper implements StringWrapper {
