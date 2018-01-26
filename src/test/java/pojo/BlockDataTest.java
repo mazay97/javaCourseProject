@@ -1,4 +1,4 @@
-package etc;
+package pojo;
 
 import static org.junit.Assert.*;
 

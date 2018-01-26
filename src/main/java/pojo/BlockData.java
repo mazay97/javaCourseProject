@@ -1,4 +1,4 @@
-package etc;
+package pojo;
 
 public class BlockData {
     private Integer mAddedStringBeginNumber;

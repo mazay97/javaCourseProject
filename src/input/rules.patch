@@ -1,0 +1,27 @@
+From ace9f47f90e4baee29183cf5b393e0807371cf70 Mon Sep 17 00:00:00 2001
+From: kisenka <qtuzov@gmail.com>
+Date: Sat, 5 Aug 2017 00:30:24 +0300
+Subject: [PATCH] fix(loader): handle case when rule test is a function
+
+ISSUES CLOSED: #169
+---
+ lib/utils/get-matched-rules.js | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/lib/utils/get-matched-rules.js b/lib/utils/get-matched-rules.js
+index 35910ce..98d1068 100644
+--- a/lib/utils/get-matched-rules.js
++++ b/lib/utils/get-matched-rules.js
+@@ -9,7 +9,11 @@ const RuleSet = !isWebpack1 ? require('webpack/lib/RuleSet') : null;
+  * @return {Rule[]}
+  */
+ function getMatchedRules(request, rules, issuer) {
+-  const matchedRules = rules.filter(rule => ruleMatcher(rule, request));
++  const matchedRules = rules.filter((rule) => {
++    return typeof rule.test === 'function'
++      ? rule.test(request)
++      : ruleMatcher(rule, request);
++  });
+
+   if (issuer) {
+     return matchedRules.filter((rule) => {

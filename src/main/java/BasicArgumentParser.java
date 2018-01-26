@@ -12,6 +12,7 @@ public class BasicArgumentParser implements ArgumentParser{
     private Pattern FLAG_REGEX = Pattern.compile("--[a-zA-Z]+");
 
     public void parse(String[] args) throws IllegalArgumentException{
+
         if (args.length == 0){
             throw new IllegalArgumentException("Wrong size of arguments");
         }

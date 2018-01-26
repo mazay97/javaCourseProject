@@ -33,7 +33,7 @@ public class BasicSplitWriterTest {
         data.add(new ArrayList<>());
         data.add(new ArrayList<>());
         BasicTemplateReader basicTemplateReader = new BasicTemplateReader();
-        basicTemplateReader.readTemplate("src/input/split.html");
+        basicTemplateReader.readTemplate("split.html");
         List<String> template = basicTemplateReader.getTemplate();
 
         BasicSplitWriter splitWriter = new BasicSplitWriter(data, template);
@@ -56,11 +56,12 @@ public class BasicSplitWriterTest {
         deleted.add(new BasicPatchString(3, '-', "asd123"));
         data.add(deleted);
         data.add(added);
-        BasicTemplateReader basicTemplateReader = new BasicTemplateReader();
-        basicTemplateReader.readTemplate("src/input/split.html");
+
+        TemplateReader basicTemplateReader = new BasicTemplateReader();
+        basicTemplateReader.readTemplate("split.html");
         List<String> template = basicTemplateReader.getTemplate();
 
-        BasicSplitWriter splitWriter = new BasicSplitWriter(data, template);
+        DataWriter splitWriter = new BasicSplitWriter(data, template);
         splitWriter.generateHtml("test4.html");
 
         List<String> lines = Files.readAllLines(Paths.get("test4.html"), StandardCharsets.UTF_8);

@@ -21,8 +21,8 @@ public class Main {
     private static final String MODE_FLAG = "--mode";
     private static final String SPLIT_MODE = "split";
     private static final String UNIFIED_MODE = "unified";
-    private static final String UNIFIED_TEMPLATE = "src/input/unified.html";
-    private static final String SPLIT_TEMPLATE = "src/input/split.html";
+    private static final String UNIFIED_TEMPLATE = "unified.html";
+    private static final String SPLIT_TEMPLATE = "split.html";
 
     private static final Integer SPLIT_INFO_BLOCK_NUMBER = 28;
     private static final Integer UNIFIED_INFO_BLOCK_NUMBER = 20;
@@ -45,7 +45,6 @@ public class Main {
             System.out.println("Wrong data in basicPatch in file block");
         } catch (Exception ex){
             System.out.println(ex.getMessage());
-            ex.printStackTrace();
         }
 
     }
@@ -80,7 +79,7 @@ public class Main {
         DataMerger dm = new BasicDataMerger(basicPatch.getStrings(), file);
         InfoWriter infoWriter;
 
-        List<String> htmlTemplate = new ArrayList<>();
+        List<String> htmlTemplate;
         switch (mode) {
             case SPLIT_MODE: {
                 tr.readTemplate(SPLIT_TEMPLATE);

@@ -1,6 +1,6 @@
 package patch;
 
-import etc.BlockData;
+import pojo.BlockData;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
