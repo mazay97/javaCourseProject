@@ -1,19 +1,18 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+public class BasicArgumentParser implements ArgumentParser {
 
-public class BasicArgumentParser implements ArgumentParser{
+    private final List<String> mExpectedFlags = new ArrayList<>();
+    private final Map<String, String> mArguments = new HashMap<>();
+    private final Pattern FLAG_REGEX = Pattern.compile("--[a-zA-Z]+");
 
-    private List<String> mExpectedFlags = new ArrayList<>();
-    private Map<String, String> mArguments = new HashMap<>();
-    private Pattern FLAG_REGEX = Pattern.compile("--[a-zA-Z]+");
+    public void parse(String[] args) throws IllegalArgumentException {
 
-    public void parse(String[] args) throws IllegalArgumentException{
-
-        if (args.length == 0){
+        if (args.length == 0) {
             throw new IllegalArgumentException("Wrong size of arguments");
         }
 
@@ -41,15 +40,15 @@ public class BasicArgumentParser implements ArgumentParser{
 
     }
 
-    public void addFlag(final String flag){
-        if (FLAG_REGEX.matcher(flag).matches()){
+    public void addFlag(final String flag) {
+        if (FLAG_REGEX.matcher(flag).matches()) {
             mExpectedFlags.add(flag);
         } else {
             throw new IllegalArgumentException("Wrong format of flag");
         }
     }
 
-    public String getValue(String flag){
+    public String getValue(String flag) {
         return mArguments.get(flag);
     }
 }

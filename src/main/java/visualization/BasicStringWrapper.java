@@ -10,7 +10,7 @@ public class BasicStringWrapper implements StringWrapper {
     private static final String OPENED_TD = "<td>";
     private static final String CLOSED_TD = "</td>\n";
 
-    public String wrap(PatchString toWrap){
+    public String wrap(PatchString toWrap) {
         StringBuilder htmlStr = new StringBuilder();
 
         if (toWrap.getStatus().equals('+')) {
@@ -33,7 +33,7 @@ public class BasicStringWrapper implements StringWrapper {
         return htmlStr.toString();
     }
 
-    public String wrap(PatchString toWrap, Integer num){
+    public String wrap(PatchString toWrap, Integer num) {
         StringBuilder htmlStr = new StringBuilder();
 
         if (toWrap.getStatus().equals('+')) {

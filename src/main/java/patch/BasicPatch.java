@@ -9,9 +9,10 @@ public class BasicPatch implements Patch {
     private String mFileName = "";
     private List<PatchString> mString = new ArrayList<>();
 
-    public BasicPatch(){}
+    public BasicPatch() {
+    }
 
-    public BasicPatch(String name, String date, String fileName, List<PatchString> strings){
+    public BasicPatch(String name, String date, String fileName, List<PatchString> strings) {
         mName = name;
         mDateOfChange = date;
         mFileName = fileName;

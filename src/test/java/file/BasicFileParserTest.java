@@ -2,10 +2,9 @@ package file;
 
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class BasicFileParserTest {
     @Test
@@ -22,7 +21,6 @@ public class BasicFileParserTest {
     public void parseNotFile() throws Exception {
         Map<Integer, String> result;
         BasicFileParser basicFileParser = new BasicFileParser("src/input.cpp");
-
-        result = basicFileParser.parse();
+        basicFileParser.parse();
     }
 }
