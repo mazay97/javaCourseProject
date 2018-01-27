@@ -1,9 +1,7 @@
 package visualization;
 
-import patch.PatchString;
-
-import java.util.List;
+import pojo.MergedData;
 
 public interface DataMerger {
-    List<List<PatchString>> getMergedData();
+    MergedData getMergedData();
 }

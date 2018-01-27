@@ -1,8 +1,6 @@
 import org.junit.Test;
-import patch.BasicPatchParser;
-import patch.PatchParser;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class BasicArgumentParserTest {
 
@@ -29,7 +27,7 @@ public class BasicArgumentParserTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void flagExpected() {
-        String[] args = {"ghjhgh", "src/input/rules.js", "--patch"};
+        String[] args = {"blaBlaBla", "src/input/rules.js", "--patch"};
         ArgumentParser argumentParser = new BasicArgumentParser();
         argumentParser.addFlag("--file");
         argumentParser.addFlag("--patch");

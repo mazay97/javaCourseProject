@@ -1,17 +1,17 @@
 package pojo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class BlockDataTest {
     @org.junit.Test
-    public void getAddedStringNumber() throws Exception {
+    public void getAddedStringNumber() {
         BlockData blockData = new BlockData(10, 20);
 
         assertEquals(10, blockData.getAddedStringNumber().intValue());
     }
 
     @org.junit.Test
-    public void getDeletedStringNumber() throws Exception {
+    public void getDeletedStringNumber() {
         BlockData blockData = new BlockData(10, 20);
 
         assertEquals(20, blockData.getDeletedStringNumber().intValue());

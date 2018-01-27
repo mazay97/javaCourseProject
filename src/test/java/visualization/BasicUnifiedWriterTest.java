@@ -3,22 +3,20 @@ package visualization;
 import org.junit.Test;
 import patch.BasicPatchString;
 import patch.PatchString;
+import pojo.MergedData;
 
-import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class BasicUnifiedWriterTest {
     @Test
     public void unifiedEmptyTemplate() throws Exception {
-        List<List<PatchString>> data = new ArrayList<>();
-        data.add(new ArrayList<>());
-        data.add(new ArrayList<>());
+        MergedData data = new MergedData(new ArrayList<>(), new ArrayList<>());
         List<String> template = new ArrayList<>();
 
         DataWriter unifiedWriter = new BasicUnifiedWriter(data, template);
@@ -30,9 +28,7 @@ public class BasicUnifiedWriterTest {
 
     @Test
     public void unifiedNormalTemplateWithEmptyData() throws Exception {
-        List<List<PatchString>> data = new ArrayList<>();
-        data.add(new ArrayList<>());
-        data.add(new ArrayList<>());
+        MergedData data = new MergedData(new ArrayList<>(), new ArrayList<>());
         BasicTemplateReader basicTemplateReader = new BasicTemplateReader();
         basicTemplateReader.readTemplate("unified.html");
         List<String> template = basicTemplateReader.getTemplate();
@@ -46,7 +42,6 @@ public class BasicUnifiedWriterTest {
 
     @Test
     public void unifiedNormalTemplateWithNormalData() throws Exception {
-        List<List<PatchString>> data = new ArrayList<>();
         List<PatchString> added = new ArrayList<>();
         List<PatchString> deleted = new ArrayList<>();
         added.add(new BasicPatchString(1, ' ', "asd"));
@@ -55,8 +50,7 @@ public class BasicUnifiedWriterTest {
         deleted.add(new BasicPatchString(1, '-', "asd123"));
         deleted.add(new BasicPatchString(2, ' ', "asd1"));
         deleted.add(new BasicPatchString(3, '-', "asd123"));
-        data.add(deleted);
-        data.add(added);
+        MergedData data = new MergedData(added, deleted);
         BasicTemplateReader basicTemplateReader = new BasicTemplateReader();
         basicTemplateReader.readTemplate("unified.html");
         List<String> template = basicTemplateReader.getTemplate();

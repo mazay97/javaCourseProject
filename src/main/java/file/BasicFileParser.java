@@ -11,16 +11,16 @@ import java.util.Map;
 public class BasicFileParser implements FileParser {
     private String mFileName = "";
 
-    public BasicFileParser(String name){
+    public BasicFileParser(String name) {
         mFileName = name;
     }
 
-    public Map<Integer, String> parse() throws IOException{
+    public Map<Integer, String> parse() throws IOException {
         Map<Integer, String> result = new HashMap<>();
         Integer stringNumber = 0;
 
         List<String> lines = Files.readAllLines(Paths.get(mFileName), StandardCharsets.UTF_8);
-        for (String line: lines){
+        for (String line : lines) {
             result.put(stringNumber, line);
             ++stringNumber;
         }

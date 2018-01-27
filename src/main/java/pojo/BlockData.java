@@ -1,19 +1,19 @@
 package pojo;
 
 public class BlockData {
-    private Integer mAddedStringBeginNumber;
-    private Integer mDeletedStringBeginNumber;
+    private final Integer mAddedStringBeginNumber;
+    private final Integer mDeletedStringBeginNumber;
 
-    public BlockData(Integer addedStringNumber, Integer deletedStringNumber){
+    public BlockData(Integer addedStringNumber, Integer deletedStringNumber) {
         mAddedStringBeginNumber = addedStringNumber;
         mDeletedStringBeginNumber = deletedStringNumber;
     }
 
-    public Integer getAddedStringNumber(){
+    public Integer getAddedStringNumber() {
         return mAddedStringBeginNumber;
     }
 
-    public Integer getDeletedStringNumber(){
+    public Integer getDeletedStringNumber() {
         return mDeletedStringBeginNumber;
     }
 }

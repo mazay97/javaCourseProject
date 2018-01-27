@@ -1,19 +1,19 @@
 package patch;
 
-public class BasicPatchString implements PatchString{
+public class BasicPatchString implements PatchString {
     private Integer mDeletedStringNumber;
     private Integer mAddedStringNumber = 0;
-    private Character mStatus;
-    private String mValue;
+    private final Character mStatus;
+    private final String mValue;
 
-    public BasicPatchString(PatchString patchString){
+    public BasicPatchString(PatchString patchString) {
         mDeletedStringNumber = patchString.getDeletedStringNumber();
         mStatus = patchString.getStatus();
         mValue = patchString.getValue();
         mAddedStringNumber = patchString.getAddedStringNumber();
     }
 
-    public BasicPatchString(Integer number, Character status1, String value1){
+    public BasicPatchString(Integer number, Character status1, String value1) {
         mDeletedStringNumber = number;
         mStatus = status1;
         mValue = value1;

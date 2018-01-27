@@ -2,11 +2,12 @@ package patch;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class BasicBasicPatchStringTest {
     @Test
-    public void getStatus() throws Exception {
+    public void getStatus() {
         BasicPatchString patchString1 = new BasicPatchString(1, '+', "123");
         BasicPatchString patchString2 = new BasicPatchString(1, '+', "123");
         BasicPatchString patchString3 = new BasicPatchString(patchString2);
@@ -16,7 +17,7 @@ public class BasicBasicPatchStringTest {
     }
 
     @Test
-    public void getValue() throws Exception {
+    public void getValue() {
         BasicPatchString patchString1 = new BasicPatchString(1, '+', "123");
         BasicPatchString patchString2 = new BasicPatchString(1, '+', "123");
         BasicPatchString patchString3 = new BasicPatchString(patchString2);
@@ -26,7 +27,7 @@ public class BasicBasicPatchStringTest {
     }
 
     @Test
-    public void getDeletedStringNumber() throws Exception {
+    public void getDeletedStringNumber() {
         BasicPatchString patchString1 = new BasicPatchString(1, '+', "123");
         BasicPatchString patchString2 = new BasicPatchString(1, '+', "123");
         BasicPatchString patchString3 = new BasicPatchString(patchString2);
@@ -36,7 +37,7 @@ public class BasicBasicPatchStringTest {
     }
 
     @Test
-    public void setDeletedStringNumber() throws Exception {
+    public void setDeletedStringNumber() {
         BasicPatchString patchString1 = new BasicPatchString(1, '+', "123");
         BasicPatchString patchString2 = new BasicPatchString(1, '+', "123");
 
@@ -45,7 +46,7 @@ public class BasicBasicPatchStringTest {
     }
 
     @Test
-    public void setAddedStringNumber() throws Exception {
+    public void setAddedStringNumber() {
         BasicPatchString patchString1 = new BasicPatchString(1, '+', "123");
         BasicPatchString patchString2 = new BasicPatchString(1, '+', "123");
 

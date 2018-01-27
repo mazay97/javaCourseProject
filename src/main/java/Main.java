@@ -4,12 +4,8 @@ import patch.BasicPatchParser;
 import patch.Patch;
 import patch.PatchParser;
 import visualization.*;
-import visualization.BasicDataMerger;
-import visualization.BasicSplitWriter;
-import visualization.BasicUnifiedWriter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
