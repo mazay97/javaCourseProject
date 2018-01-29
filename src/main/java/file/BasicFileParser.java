@@ -17,6 +17,7 @@ public class BasicFileParser implements FileParser {
     }
 
     public Map<Integer, String> parse() throws IOException {
+<<<<<<< HEAD
         try {
             Map<Integer, String> result = new HashMap<>();
             Integer stringNumber = 0;
@@ -29,6 +30,15 @@ public class BasicFileParser implements FileParser {
             return result;
         } catch (NoSuchFileException ex) {
             throw new NoSuchFileException("Wrong name of source file");
+=======
+        Map<Integer, String> result = new HashMap<>();
+        Integer stringNumber = 0;
+
+        List<String> lines = Files.readAllLines(Paths.get(mFileName), StandardCharsets.UTF_8);
+        for (String line : lines) {
+            result.put(stringNumber, line);
+            ++stringNumber;
+>>>>>>> origin/master
         }
     }
 }

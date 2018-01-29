@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
+=======
+import file.BasicFileParser;
+import patch.BasicPatch;
+import patch.BasicPatchParser;
+import patch.Patch;
+import patch.PatchParser;
+import visualization.*;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+>>>>>>> origin/master
 
 public class Main {
 
