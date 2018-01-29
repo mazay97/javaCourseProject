@@ -40,15 +40,9 @@ public class BasicPatchParser implements PatchParser {
 
             String fileName = lines.get(mFileBlock + 1);
 
-<<<<<<< HEAD
             if (mFileBlock == 0) {
                 throw new IOException("Can't find file block");
             }
-=======
-        if (mFileBlock == 0) {
-            throw new IOException("Can't find file block");
-        }
->>>>>>> origin/master
 
             readLines(lines);
 
@@ -93,7 +87,6 @@ public class BasicPatchParser implements PatchParser {
     private BlockData parseStringNumber(String line) throws NumberFormatException {
         BlockData result;
         String[] splitLine = line.split("\\s");
-<<<<<<< HEAD
         try {
             if (splitLine.length >= LENGTH_OF_NUMBER_STRING) {
                 if (!splitLine[0].equals(BLOCK_INFO_BEGINNING) || !splitLine[3].equals(BLOCK_INFO_BEGINNING)) {
@@ -109,18 +102,6 @@ public class BasicPatchParser implements PatchParser {
             } else {
                 throw new IllegalArgumentException("Wrong format of number string");
             }
-=======
-
-        if (splitLine.length >= LENGTH_OF_NUMBER_STRING) {
-            if (!splitLine[0].equals(BLOCK_INFO_BEGINNING) || !splitLine[3].equals(BLOCK_INFO_BEGINNING)) {
-                throw new IllegalArgumentException("Wrong format of number string");
-            }
-            String[] addedData = splitLine[2].split(",");
-            String[] deletedData = splitLine[1].split(",");
-
-            Integer addedNumber = Integer.parseInt(addedData[0].replaceAll("\\+", ""));
-            Integer deletedNumber = Integer.parseInt(deletedData[0].replaceAll("-", ""));
->>>>>>> origin/master
 
             return result;
         } catch (NumberFormatException ex) {
@@ -145,20 +126,24 @@ public class BasicPatchParser implements PatchParser {
                     return resultInd - 1;
                 }
 
-                if (lines.get(i).charAt(0) == ADDED_STRING_LITERAL) {
-                    string = new BasicPatchString(addedStringNumber, lines.get(i).charAt(0), lines.get(i).substring(1, lines.get(i).length()));
-                    string.setAddedStringNumber(addedStringNumber);
-                    mStrings.add(string);
-                    addedStringNumber++;
-                    index++;
-                    wasFound = true;
-                } else if (lines.get(i).charAt(0) == DELETED_STRING_LITERAL) {
-                    mStrings.add(new BasicPatchString(deletedStringNumber, lines.get(i).charAt(0), lines.get(i).substring(1, lines.get(i).length())));
-                    deletedStringNumber++;
-                    wasFound = true;
-                } else {
-                    wasFound = false;
-                    index++;
+                switch (lines.get(i).charAt(0)) {
+                    case ADDED_STRING_LITERAL:
+                        string = new BasicPatchString(addedStringNumber, lines.get(i).charAt(0), lines.get(i).substring(1, lines.get(i).length()));
+                        string.setAddedStringNumber(addedStringNumber);
+                        mStrings.add(string);
+                        addedStringNumber++;
+                        index++;
+                        wasFound = true;
+                        break;
+                    case DELETED_STRING_LITERAL:
+                        mStrings.add(new BasicPatchString(deletedStringNumber, lines.get(i).charAt(0), lines.get(i).substring(1, lines.get(i).length())));
+                        deletedStringNumber++;
+                        wasFound = true;
+                        break;
+                    default:
+                        wasFound = false;
+                        index++;
+                        break;
                 }
             } else {
                 wasFound = false;

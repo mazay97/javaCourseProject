@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class BasicFileAndPatchComparator implements Comparator {
-    private Patch mPatch;
-    private Map<Integer, String> mFile;
-    private String mFileName;
+    private final Patch mPatch;
+    private final Map<Integer, String> mFile;
+    private final String mFileName;
 
     public BasicFileAndPatchComparator(Patch patch, Map<Integer, String> file, String fileName) {
         mPatch = patch;
@@ -29,10 +29,10 @@ public class BasicFileAndPatchComparator implements Comparator {
 
     private void comparePatchAndFile() throws IllegalArgumentException {
         List<PatchString> patchStrings = mPatch.getStrings();
-        for (int i = 0; i < patchStrings.size(); i++){
-            if (patchStrings.get(i).getStatus() == '-') {
-                if (!patchStrings.get(i).getValue().equals(mFile.get(patchStrings.get(i).getDeletedStringNumber() - 1))){
-                    System.out.println(patchStrings.get(i).getValue() + " " + (mFile.get(patchStrings.get(i).getDeletedStringNumber() - 1)));
+        for (PatchString patchString : patchStrings) {
+            if (patchString.getStatus() == '-') {
+                if (!patchString.getValue().equals(mFile.get(patchString.getDeletedStringNumber() - 1))) {
+                    System.out.println(patchString.getValue() + " " + (mFile.get(patchString.getDeletedStringNumber() - 1)));
                     throw new IllegalArgumentException("Deleted string in file and patch not the same");
                 }
             }

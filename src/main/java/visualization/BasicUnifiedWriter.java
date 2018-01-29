@@ -85,12 +85,15 @@ public class BasicUnifiedWriter implements DataWriter {
         Integer addedStrIndex = 0;
 
         for (PatchString aResult : result) {
-            if (aResult.getStatus() == '+') {
-                addedStrIndex++;
-            } else if (aResult.getStatus() == '-') {
-                continue;
-            } else {
-                addedStrIndex++;
+            switch (aResult.getStatus()) {
+                case '+':
+                    addedStrIndex++;
+                    break;
+                case '-':
+                    continue;
+                default:
+                    addedStrIndex++;
+                    break;
             }
             aResult.setDeletedStringNumber(addedStrIndex);
         }
