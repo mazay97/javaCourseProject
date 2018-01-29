@@ -34,13 +34,6 @@ public class BasicBasicPatchParserTest {
         basicPatchParser.parsePatch();
     }
 
-    @Test
-    public void parsePatchWithTwoNumberStrings() throws Exception {
-        BasicPatchParser basicPatchParser = new BasicPatchParser("src/input/Game.patch");
-
-        basicPatchParser.parsePatch();
-    }
-
     @Test(expected = NoSuchFileException.class)
     public void parsePatchWithErrorInFileName() throws Exception {
         BasicPatchParser basicPatchParser = new BasicPatchParser("src/input/Ge.patch");

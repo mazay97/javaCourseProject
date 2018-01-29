@@ -6,20 +6,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicTemplateReader implements TemplateReader{
-    private List<String> mTemplate = new ArrayList<>();
+public class BasicTemplateReader implements TemplateReader {
+    private final List<String> mTemplate = new ArrayList<>();
 
-    public void readTemplate(final String path) throws IOException{
+    public void readTemplate(final String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
 
         String str;
-        while ((str=br.readLine())!=null){
+        while ((str = br.readLine()) != null) {
             mTemplate.add(str + "\n");
         }
 
     }
 
-    public List<String> getTemplate(){
+    public List<String> getTemplate() {
         return mTemplate;
     }
 }

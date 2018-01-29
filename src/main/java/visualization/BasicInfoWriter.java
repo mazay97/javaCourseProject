@@ -1,30 +1,28 @@
 package visualization;
 
-import patch.BasicPatch;
 import patch.Patch;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BasicInfoWriter implements InfoWriter{
-    private String mAuthor;
-    private String mDate;
-    private String mFile;
-    private Integer mInfoBlockNumber;
+public class BasicInfoWriter implements InfoWriter {
+    private final String mAuthor;
+    private final String mDate;
+    private final String mFile;
+    private final Integer mInfoBlockNumber;
     private static final String OPENED_H = "<h2>";
     private static final String CLOSED_H = "</h2>";
 
 
-    public BasicInfoWriter(Patch basicPatch, Integer blockNumber){
+    public BasicInfoWriter(Patch basicPatch, Integer blockNumber) {
         mAuthor = basicPatch.getName();
         mDate = basicPatch.getDateOfChange();
         mFile = basicPatch.getFileName();
         mInfoBlockNumber = blockNumber;
     }
 
-    public void wrap(List<String> template){
+    public void wrap(List<String> template) {
 
-        if (mInfoBlockNumber > template.size()){
+        if (mInfoBlockNumber > template.size()) {
             throw new IllegalArgumentException("Info block line number is higher than file length");
         }
 
